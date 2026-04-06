@@ -398,10 +398,13 @@ header .burger span {
   -o-object-fit: cover;
      object-fit: cover;
 }
-.video-wrap .video-text {
+
+/* CENTERING ONLY */
+.video-text {
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
   font-family: "Druk Trial", sans-serif;
   font-size: 230px;
@@ -411,15 +414,23 @@ header .burger span {
   text-align: center;
   color: #3b35ff;
   letter-spacing: 2px;
-  opacity: 0;
-  transform: translate(-50%, 180px) scale(0.95);
-  animation: slideFade 1.8s ease-out forwards;
-  animation-delay: 0.7s;
 }
 
-@keyframes slideFade {
+/* ANIMATION ONLY */
+.animated-text {
+  display: inline-block;
+  animation: slideInUp 1.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation-delay: 0.4s;
+  opacity: 0;
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(120px);
+    opacity: 0;
+  }
   to {
-    transform: translate(-50%, -50%) scale(1);
+    transform: translateY(0);
     opacity: 1;
   }
 }
@@ -564,6 +575,69 @@ header .burger span {
 
 .empty {
   background: transparent;
+}
+
+.video-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+/* video stays normal */
+.video-reveal video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/* mask animation layer */
+.video-mask {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  z-index: 2;
+  transform: scaleX(1);
+  transform-origin: left center;
+  transition: transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* when active */
+.video-reveal.show .video-mask {
+  transform: scaleX(0);
+}
+
+.reveal {
+  display: inline-block;
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: transform 1.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s ease;
+}
+
+.reveal[data-anim=up] {
+  transform: translateY(140px);
+}
+
+.reveal[data-anim=down] {
+  transform: translateY(-80px);
+}
+
+.reveal[data-anim=left] {
+  transform: translateX(-80px);
+}
+
+.reveal[data-anim=right] {
+  transform: translateX(80px);
+}
+
+.reveal[data-anim=scale] {
+  transform: scale(0.85);
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translate(0, 0);
 }
 
 .stripe-section {
@@ -840,14 +914,17 @@ header .burger span {
 
 @media (max-width: 767px) {
   .video-text {
-    font-size: 56px;
+    font-size: 8rem;
     white-space: normal;
     padding: 0 16px;
-    /* IMPORTANT */
     transform: translate(-50%, 120px) scale(0.95);
+    top: 15%;
+  }
+  .video-text span {
+    display: inline-block;
   }
   .plus {
-    font-size: 14px;
+    font-size: 44px;
   }
   .top-left,
   .top-right {
@@ -893,12 +970,12 @@ header .burger span {
   }
   .text-box {
     align-items: center;
-    padding: 16px;
+    padding: 10px 0;
   }
   .text-box p {
-    font-size: 14px;
+    font-size: 21px;
     line-height: 1.6;
-    text-align: center;
+    text-align: left;
   }
   .stripe-section {
     padding: 30px 16px;
@@ -933,7 +1010,6 @@ header .burger span {
   }
   .marquee-wrapper {
     padding: 40px 0;
-    /* Mobile par hover available nahi hota */
   }
   .marquee-wrapper .marquee {
     height: 260px;
@@ -946,6 +1022,9 @@ header .burger span {
   }
   .marquee-wrapper .marquee .marquee-row .track span {
     font-size: 80px;
+  }
+  .marquee-wrapper {
+    /* Mobile par hover available nahi hota */
   }
   .marquee-wrapper .center-btn {
     opacity: 1;

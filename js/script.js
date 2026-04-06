@@ -13,10 +13,6 @@
 
 
 
-
-
-
-
 const cursor = document.querySelector('.custom-cursor');
 
 let mouseX = 0, mouseY = 0;

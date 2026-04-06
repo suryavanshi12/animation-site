@@ -68,7 +68,11 @@
         </video>
 
         <!-- CENTER TEXT -->
-        <h1 class="video-text">CONQUER OR BE CONQUERED</h1>
+        <h1 class="video-text">
+          <span class="reveal" data-anim="up">
+            CONQUER OR BE CONQUERED
+          </span>
+        </h1>
 
         <!-- PLUS ICONS -->
         <span class="plus top-left">+</span>
@@ -80,8 +84,11 @@
 
     <section>
       <div class="intro-section">
-        <h3>01//INTRO</h3>
-        <p>No-Mercy is a global creative studio that crafts innovative visuals for the world's boldest brands. We
+        <h3 class="reveal" data-anim="up">01//INTRO</h3>
+        <p class="reveal" data-anim="up">No-Mercy is a global creative studio that crafts innovative visuals for the
+          world's
+          boldest brands.
+          We
           leverage decades of experience to shatter cross-channel boundaries and ignite growth-no excuses, no
           compromises, no mercy.</p>
         <button class="slide-btn">
@@ -96,9 +103,9 @@
 
     <section>
       <div class="work-section">
-        <h3>02//OUR WORK</h3>
+        <h3 class="reveal" data-anim="up">02//OUR WORK</h3>
         <div class="work-row">
-          <h5>recent projects</h5>
+          <h5 class="reveal" data-anim="up">recent projects</h5>
           <button class="slide-btn">
             <span class="slide-btn-default">explore <i class="fa fa-angle-right"></i></span>
 
@@ -113,25 +120,26 @@
     <section class="video-grid">
       <div class="grid">
 
-        <!-- Text Box -->
         <div class="grid-item text-box">
-          <p>From dynamic campaigns that reinvent brand narratives to groundbreaking visual experiences, if it’s on a
-            screen, we’re all about it.</p>
+          <p>
+            From dynamic campaigns that reinvent brand narratives to groundbreaking visual
+            experiences, if it’s on a screen, we’re all about it.
+          </p>
         </div>
 
-        <div class="grid-item video-box box1">
+        <div class="grid-item video-box box1 video-reveal">
           <video autoplay muted loop playsinline>
             <source src="img/bmw-main.mp4" type="video/mp4" />
           </video>
         </div>
 
-        <div class="grid-item video-box">
+        <div class="grid-item video-box video-reveal">
           <video autoplay muted loop playsinline>
             <source src="img/bmw-main.mp4" type="video/mp4" />
           </video>
         </div>
 
-        <div class="grid-item video-box">
+        <div class="grid-item video-box video-reveal">
           <video autoplay muted loop playsinline>
             <source src="img/bmw-main.mp4" type="video/mp4" />
           </video>
@@ -139,7 +147,7 @@
 
         <div class="grid-item empty"></div>
 
-        <div class="grid-item video-box large">
+        <div class="grid-item video-box large video-reveal">
           <video autoplay muted loop playsinline>
             <source src="img/bmw-main.mp4" type="video/mp4" />
           </video>
@@ -151,7 +159,7 @@
     <section>
       <div class="stripe-section">
         <div class="uppar-row">
-          <h3>03//OUR STRIPES</h3>
+          <h3 class="reveal" data-anim="up">03/OUR STRIPES</h3>
           <button class="slide-btn">
             <span class="slide-btn-default">explore <i class="fa fa-angle-right"></i></span>
 
@@ -161,7 +169,7 @@
           </button>
         </div>
         <div class="bottom-row">
-          <h5>brand <br> experience</h5>
+          <h5 class="reveal" data-anim="up">brand <br> experience</h5>
           <div class="images-wrap">
             <div class="box"><span class="icon icon-roit"></span></div>
             <div class="box"><span class="icon icon-nike"></span></div>
@@ -244,8 +252,13 @@
   </main>
 
   <script src="js/script.js"></script>
+  <script src="js/animation.js"></script>
   <!-- <script>
-    
+    window.addEventListener("load", () => {
+      document
+        .querySelectorAll(".video-reveal")
+        .forEach(el => el.classList.add("show"));
+    });
   </script> -->
 
 </body>
